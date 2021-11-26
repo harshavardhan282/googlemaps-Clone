@@ -9,7 +9,7 @@ navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
   }
   
   function errorLocation() {
-    setupMap([-2.24, 53.48])
+    setupMap([-96, 37.8])
   }
   
   function setupMap(center) {
@@ -26,6 +26,19 @@ navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
     var directions = new MapboxDirections({
       accessToken: mapboxgl.accessToken
     })
+
+
+    // Add geolocate control to the map.
+map.addControl(
+  new mapboxgl.GeolocateControl({
+  positionOptions: {
+  enableHighAccuracy: true
+  },
+  
+  trackUserLocation: true,
+
+  showUserHeading: true
+  }))
   
     map.addControl(directions, "top-left")
   }
